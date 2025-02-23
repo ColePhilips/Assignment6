@@ -19,7 +19,7 @@ describe('MainController', function() {
 
     it('should fetch monsters from the API on initialization', function() {
         // Mock the API response for the initialization request
-        $httpBackend.expectGET('http://localhost:5000/monsters').respond(200, [
+        $httpBackend.expectGET('http://44.201.124.232:5000/monsters').respond(200, [
             { id: 1, name: 'Monster 1', description: 'First monster', type: 'Type A' },
             { id: 2, name: 'Monster 2', description: 'Second monster', type: 'Type B' }
         ]);
@@ -37,7 +37,7 @@ describe('MainController', function() {
         $scope.newMonster = { name: 'Monster 3', description: 'Third monster', type: 'Type C' };
 
         // Mock the API response for adding a monster
-        $httpBackend.expectPOST('http://localhost:5000/monsters', $scope.newMonster).respond(201, {
+        $httpBackend.expectPOST('http://44.201.124.232:5000/monsters', $scope.newMonster).respond(201, {
             id: 3,
             name: 'Monster 3',
             description: 'Third monster',
@@ -55,7 +55,7 @@ describe('MainController', function() {
         const controller = $controller('MainController', { $scope });
 
         // Mock the API response for finding a monster
-        $httpBackend.expectGET('http://localhost:5000/monsters/1').respond(200, {
+        $httpBackend.expectGET('http://44.201.124.232:5000/monsters/1').respond(200, {
             id: 1,
             name: 'Monster 1',
             description: 'First monster',
@@ -73,7 +73,7 @@ describe('MainController', function() {
         $scope.monsters = [{ id: 1, name: 'Monster 1' }];
 
         // Mock the API response for deleting a monster
-        $httpBackend.expectDELETE('http://localhost:5000/monsters/1').respond(200, {
+        $httpBackend.expectDELETE('http://44.201.124.232:5000/monsters/1').respond(200, {
             message: 'Monster deleted successfully!'
         });
 

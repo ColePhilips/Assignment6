@@ -8,7 +8,7 @@ from unittest.mock import patch, MagicMock
 # Create a test client
 @pytest.fixture
 def client():
-    app.config["MONGO_URI"] = "mongodb://localhost:27017/test_db"  # Use a test database
+    app.config["MONGO_URI"] = "mongodb+srv://ColePhilips:MongoDBDragon22!@monsterhunterdb.3kgwi.mongodb.net/test_db?retryWrites=true&w=majority&appName=MonsterHunterDB"  # Use a test database
     with app.test_client() as client:
         yield client
 
