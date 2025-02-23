@@ -104,4 +104,4 @@ class Monster(Resource):
 api.add_resource(Monster, "/monsters", "/monsters/<int:monster_id>")
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host ="0.0.0.0", port = 5000, debug=True)
