@@ -6,7 +6,7 @@ from flask_cors import CORS
 
 # Initialize Flask app
 app = Flask(__name__)
-app.config["MONGO_URI"] = "mongodb://localhost:27017/mhw_db"  # MongoDB URI
+app.config["MONGO_URI"] = "mongodb+srv://ColePhilips:MongoDBDragon22!@monsterhunterdb.3kgwi.mongodb.net/?retryWrites=true&w=majority&appName=MonsterHunterDB"  # MongoDB URI
 CORS(app)
 mongo = PyMongo(app)
 api = Api(app)

@@ -2,8 +2,7 @@ import requests
 import time
 from pymongo import MongoClient
 
-
-client = MongoClient('mongodb://localhost:27017/') #connect to local DB and use compass to check on database
+client = MongoClient('mongodb+srv://ColePhilips:MongoDBDragon22!@monsterhunterdb.3kgwi.mongodb.net/?retryWrites=true&w=majority&appName=MonsterHunterDB') #connect to local DB and use compass to check on database
 db = client.mhw_db  # Create a database for Monster Hunter World data
 collection = db.monsters  # Collection to store monster data
 
