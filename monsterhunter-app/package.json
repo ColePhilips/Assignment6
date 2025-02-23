@@ -1,0 +1,30 @@
+{
+  "name": "monsterhunter-app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "mongoose": "^8.10.1",
+    "swagger-ui-express": "^5.0.1"
+  },
+  "devDependencies": {
+    "angular": "^1.8.3",
+    "angular-mocks": "^1.8.3",
+    "jasmine-core": "^5.6.0",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "karma": "^6.4.4",
+    "karma-chrome-launcher": "^3.2.0",
+    "karma-coverage": "^2.2.1",
+    "karma-jasmine": "^5.1.0",
+    "supertest": "^7.0.0"
+  }
+}

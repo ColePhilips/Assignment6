@@ -1,0 +1,123 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "title": "Monster Hunter API",
+      "version": "1.0.0",
+      "description": "API for managing monsters in Monster Hunter World."
+    },
+    "paths": {
+      "/monsters": {
+        "get": {
+          "summary": "Get all monsters",
+          "responses": {
+            "200": {
+              "description": "A list of monsters"
+            }
+          }
+        },
+        "post": {
+          "summary": "Create a new monster",
+          "parameters": [
+            {
+              "name": "monster",
+              "in": "body",
+              "description": "The monster to create",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/Monster"
+              }
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "Monster created successfully"
+            }
+          }
+        }
+      },
+      "/monsters/{id}": {
+        "get": {
+          "summary": "Get a monster by ID",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "The monster"
+            },
+            "404": {
+              "description": "Monster not found"
+            }
+          }
+        },
+        "put": {
+          "summary": "Update a monster by ID",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "name": "monster",
+              "in": "body",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/Monster"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Monster updated successfully"
+            },
+            "404": {
+              "description": "Monster not found"
+            }
+          }
+        },
+        "delete": {
+          "summary": "Delete a monster by ID",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Monster deleted successfully"
+            },
+            "404": {
+              "description": "Monster not found"
+            }
+          }
+        }
+      }
+    },
+    "definitions": {
+      "Monster": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          }
+        },
+        "required": ["name", "description"]
+      }
+    }
+  }
