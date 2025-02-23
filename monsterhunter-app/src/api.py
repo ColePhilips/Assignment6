@@ -14,6 +14,8 @@ if mongo is None:
     print("MongoDB connection failed!")
 else:
     print("MongoDB connection established.")
+    monster = mongo.db.monsters.find_one({"id": int(1)})
+    print({"id": monster["id"], "name": monster["name"], "description": monster["description"], "type": monster["type"]})
 api = Api(app)
 
 # Swagger for API documentation
