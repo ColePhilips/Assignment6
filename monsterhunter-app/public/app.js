@@ -6,7 +6,7 @@ app.controller('MainController', function($scope, $http) {
 
     // Fetch all monsters on controller initialization
     $scope.fetchMonsters = function() {
-        $http.get('http://localhost:5000/monsters')  // Update to your Flask API endpoint
+        $http.get('http://44.201.124.232:5000/monsters')  // Update to your Flask API endpoint
             .then(function(response) {
                 $scope.monsters = response.data; // Store the fetched monsters
                 console.log("Fetched monsters:", $scope.monsters); // Debug log
@@ -21,7 +21,7 @@ app.controller('MainController', function($scope, $http) {
 
     // Add a new monster
     $scope.addMonster = function() {
-        $http.post('http://localhost:5000/monsters', $scope.newMonster)  // Update to your Flask API endpoint
+        $http.post('http://44.201.124.232:5000/monsters', $scope.newMonster)  // Update to your Flask API endpoint
             .then(function(response) {
                 $scope.monsters.push(response.data);
                 $scope.newMonster = {};
@@ -30,7 +30,7 @@ app.controller('MainController', function($scope, $http) {
 
     // Delete a monster
     $scope.deleteMonster = function(id) {
-        $http.delete('http://localhost:5000/monsters/' + id)  // Corrected URL
+        $http.delete('http://44.201.124.232:5000/monsters/' + id)  // Corrected URL
             .then(function() {
                 $scope.monsters = $scope.monsters.filter(monster => monster.id !== id);
                 if ($scope.foundMonster && $scope.foundMonster.id === id) {
@@ -41,7 +41,7 @@ app.controller('MainController', function($scope, $http) {
 
     $scope.findMonsterById = function(id) {
         // Fetch the monster by ID
-        $http.get('http://localhost:5000/monsters/' + id)  // Corrected URL
+        $http.get('http://44.201.124.232:5000/monsters/' + id)  // Corrected URL
             .then(function(response) {
                 $scope.foundMonster = response.data; // Store the found monster
                 console.log("Found Monster:", id); // Debug log
