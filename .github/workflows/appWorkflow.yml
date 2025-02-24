@@ -18,12 +18,13 @@ jobs:
         with:
           python-version: '3.8'  # Specify your Python version
 
-      - name: Install Python dependencies
+      - name: Create and activate virtual environment
         run: |
           cd monsterhunter-app
-          python -m venv venv  # Create a virtual environment if not already created
+          python -m venv venv  # Create a virtual environment
           source venv/bin/activate
-          pip install -r requirements.txt  # Ensure you have a requirements.txt file that includes pytest
+          pip install --upgrade pip  # Upgrade pip to the latest version
+          pip install -r requirements.txt  # Install Python dependencies
 
       - name: Change to application directory
         run: |
