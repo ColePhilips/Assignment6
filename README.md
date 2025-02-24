@@ -3,10 +3,14 @@ The application now runs off of AWS services as well as MongoDB with AWS.
 You can freely access the web application from http://44.201.124.232.
 
 # GitHub WorkFlow
-
-
-
-
+![image](https://github.com/user-attachments/assets/ceff7885-4d87-4625-a467-c2e811d45a72)\
+The first 3 steps in the workflow first test if the code has any blatant errors by running checkout@v2. It then setsup the application with python, Lastly it will remove any current enviornment setup to avoid any corrupted files in transfer.
+![image](https://github.com/user-attachments/assets/f6e84ec8-bb98-4b46-aafb-b30d901167af)\
+We then create the new virtual enviornment and activate it to properly run the rest of the flow. Making sure pip is properly installed and up to date.\
+![image](https://github.com/user-attachments/assets/178a282e-2c3a-4530-8f3c-e47958da6465)\
+We then change the directory to the application root and run our test files on the application to make sure its eligible to be deployed.
+![image](https://github.com/user-attachments/assets/2a48c8fc-6e93-4d10-86bc-16800606a5cb)\
+Lastly once the application is tested and passes the tests then it will move onto deployment where using the private key it will ssh into the AWS server and pull from main while making sure to install any new frontend and backend dependencies. Lastly it will restart the systemct1 service that keeps the app running while the terminals down. This allows it to refresh with the new code implementation.
 
 # Backend testing
 Run via going into directory src and running pytest test_api.py.
