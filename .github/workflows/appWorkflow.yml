@@ -23,8 +23,20 @@ jobs:
           cd monsterhunter-app
           python -m venv venv  # Create a virtual environment
           source venv/bin/activate
+          # Check if pip exists
+          if [ -f venv/bin/pip ]; then
+            echo "pip found"
+          else
+            echo "pip not found"
+            exit 1
+          fi
           pip install --upgrade pip  # Upgrade pip to the latest version
           pip install -r requirements.txt  # Install Python dependencies
+
+      - name: List contents of the virtual environment
+        run: |
+          cd monsterhunter-app
+          ls -R venv  # List contents of the virtual environment to check if pip is there
 
       - name: Change to application directory
         run: |
