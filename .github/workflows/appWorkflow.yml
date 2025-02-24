@@ -13,6 +13,18 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'  # Specify your Python version
+
+      - name: Install Python dependencies
+        run: |
+          cd monsterhunter-app
+          python -m venv venv  # Create a virtual environment if not already created
+          source venv/bin/activate
+          pip install -r requirements.txt  # Ensure you have a requirements.txt file that includes pytest
+
       - name: Change to application directory
         run: |
           cd monsterhunter-app
@@ -21,7 +33,8 @@ jobs:
       - name: Run tests
         run: |
           cd monsterhunter-app
-          npm test  # Adjust this if you have specific tests
+          source venv/bin/activate  # Activate the virtual environment
+          python src/test_api.py  # Run your test script
 
       - name: Deploy to EC2
         env:
@@ -37,6 +50,6 @@ jobs:
             source venv/bin/activate  # Activate the virtual environment
             npm install  # Install Node.js dependencies
             # If you need to install Python dependencies, run:
-            # pip install -r requirements.txt
+            pip install -r requirements.txt  # Ensure pytest is included here
             sudo systemctl restart myapp.service  # Restart the systemd service
           EOF
