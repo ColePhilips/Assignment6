@@ -13,22 +13,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '14'  # Specify your Node.js version
-          
-      - name: List directory contents
-        run: ls -R  # This will help you debug the directory structure
-        
-      - name: Install dependencies
+      - name: Change to application directory
         run: |
-          cd Assignment6/monsterhunter-app
-          npm install
+          cd monsterhunter-app
+          npm install  # Install Node.js dependencies
 
       - name: Run tests
         run: |
-          cd Assignment6/monsterhunter-app
+          cd monsterhunter-app
           npm test  # Adjust this if you have specific tests
 
       - name: Deploy to EC2
