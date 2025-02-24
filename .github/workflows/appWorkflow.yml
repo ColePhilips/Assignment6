@@ -1,0 +1,42 @@
+name: Deploy to AWS EC2
+
+on:
+  push:
+    branches:
+      - main  # Change this to your default branch if it's not 'main'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Change to application directory
+        run: |
+          cd monsterhunter-app
+          npm install  # Install Node.js dependencies
+
+      - name: Run tests
+        run: |
+          cd monsterhunter-app
+          npm test  # Adjust this if you have specific tests
+
+      - name: Deploy to EC2
+        env:
+          EC2_HOST: ${{ secrets.EC2_HOST }}
+          EC2_USER: ${{ secrets.EC2_USER }}
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        run: |
+          echo "$SSH_PRIVATE_KEY" > private_key.pem
+          chmod 600 private_key.pem
+          ssh -o StrictHostKeyChecking=no -i private_key.pem $EC2_USER@$EC2_HOST << 'EOF'
+            cd ~/Assignment6/monsterhunter-app
+            git pull origin main  # Pull the latest changes
+            source venv/bin/activate  # Activate the virtual environment
+            npm install  # Install Node.js dependencies
+            # If you need to install Python dependencies, run:
+            # pip install -r requirements.txt
+            sudo systemctl restart myapp.service  # Restart the systemd service
+          EOF
